@@ -1,0 +1,109 @@
+## Project Overview
+This is a Next.js application designed to be a lead capture and outreach dashboard. It uses the App Router and a Server-First architecture to fetch and display lead data from a PostgreSQL database. The data is populated by an automated n8n workflow. The dashboard focuses on providing key metrics and a detailed, interactive table of leads.
+
+## Architecture & Tech Stack
+
+### Core Dependencies
+
+- **Next.js**: 15.4.6
+- **React**: 19.1.0
+- **TypeScript**: 5.x
+- **Database**: PostgreSQL with Prisma 6.9.0 ORM
+- **Styling**: Tailwind CSS with custom CSS variables (dark theme first)
+- **UI Components**: Radix UI primitives with shadcn/ui patterns
+- **Package Manager**: NPM
+
+## Development Rules & Guidelines
+
+### NEVER USE
+- `middleware.ts` - Authentication and routing should be handled in components/pages
+- `"use client;"` in `layout.tsx` or `page.tsx` files - Only use in actual components
+- `npm run build` unless specifically requested - Assume `npm run dev` is running
+
+### Always Use
+- **Package Manager**: `NPM` for all package operations
+- **Server Components**: Default to Server Components for data fetching and static content.
+- **App Router**: Use Next.js 15 App Router patterns
+- **TypeScript**: Strict typing for all code
+
+### Route Parameters
+
+When a route uses params, always follow this pattern:
+
+```typescript
+// CORRECT
+export default async function LeadPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const { id } = params;
+  // Use id here to fetch specific lead data
+  const lead = await prisma.lead.findUnique({
+    where: { id: id },
+  });
+  // ... rest of the component
+}
+
+// WRONG
+export default async function Page({ params }: { params: { id: string } }) {
+  // direct usage without awaiting
+}
+```
+
+### Styling Guidelines
+- **Primary Styling**: All styles in globals.css using Tailwind CSS.
+- **Design System**: Use custom CSS variables for theming (light/dark mode support).
+
+- **UI Components**: Use existing shadcn/ui components from components/ui/ to build the dashboard. The primary components needed are:
+- Card for KPI cards and chart containers.
+- Table and Badge for the detailed leads list.
+- Button, Input for search, filtering, and actions.
+- Toaster for notifications.
+
+- **Loading States**: Use Skeleton components from shadcn/ui as placeholders while data is being fetched.
+
+- **Icons**: Use Lucide React for icons (e.g., icons for a "contacted" status or filter).
+
+### Database & Prisma
+- **ORM**: Prisma with PostgreSQL.
+- **Client Location**: Generated to app/generated/prisma.
+- **Database Schema**: The schema should be modeled on the lead data, including the following fields:
+- id (unique identifier)
+- first_name
+- last_name
+- email
+- company
+- title
+- was_contacted (boolean or string)
+- reply_date (datetime, nullable)
+- created_at (datetime)
+
+## Dashboard Structure & Functionality
+The dashboard will consist of three main sections, all fetching data from the database using server components:
+
+**Top-Level KPIs**: A row of Card components displaying key metrics:
+- Total Leads
+- Leads Contacted
+- Reply Rate (%)
+- A card for a dynamic metric, such as "Leads Replied This Week."
+- **Data Visualization**: A Card component containing a chart (using a compatible library like Recharts or Chart.js) to visualize lead data over time (e.g., leads added per month or contacted per week).
+- **Interactive Lead Table**: A Table component displaying all leads with the following features:
+- A search bar to filter by name or company.
+- Columns for first_name, company, title, and email.
+- A was_contacted column using a Badge component to visually indicate status (e.g., "Contacted" or "Pending").
+- A reply_date column to show the date a reply was received.
+- Pagination for large datasets.
+
+## Component Patterns
+- **Server Components**: Default for all data fetching and the main page structure.
+- **Client Components**: Only use for interactive parts like the search bar, filters, and any buttons that trigger actions or state changes.
+- **Data Fetching**: Use await directly in server components to fetch data with Prisma.
+
+## Code Quality Standards
+- **No Comments**: Code should be self-documenting.
+- **TypeScript Strict**: All code must pass TypeScript strict mode.
+- **Error Handling**: Use try-catch blocks for all database calls and API routes. Use toast notifications to communicate errors to the user.
+- **Validation**: Validate all inputs, especially in API routes.
+
+This codebase follows modern Next.js patterns with a server-first architecture tailored specifically to build your lead capture dashboard in the shadcn/ui style.

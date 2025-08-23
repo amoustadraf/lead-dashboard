@@ -1,103 +1,121 @@
-import Image from "next/image";
+import { prisma } from "@/lib/prisma"
+import { unstable_noStore as noStore } from "next/cache"
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+export const fetchCache = "force-no-store"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { LeadTrendsChart, type TrendPoint } from "@/components/LeadTrendsChart"
+import { LeadsTable } from "@/components/LeadsTable"
+import RefreshDataButton from "@/components/RefreshDataButton"
 
-export default function Home() {
+async function getMetrics() {
+  noStore()
+  console.log("🟢 getMetrics called at", new Date().toISOString())
+
+  try {
+    const [total, contacted, replied] = await Promise.all([
+      prisma.ai_table_sheet1.count(),
+      prisma.ai_table_sheet1.count({ where: { was_contacted: { equals: true } } }),
+      prisma.ai_table_sheet1.count({ where: { reply_date: { not: null } } }),
+    ])
+
+    const startOfWeek = (() => {
+      const d = new Date()
+      const day = d.getDay()
+      const diff = d.getDate() - day + (day === 0 ? -6 : 1)
+      const sow = new Date(d.setDate(diff))
+      sow.setHours(0, 0, 0, 0)
+      return sow
+    })()
+
+    const repliedThisWeek = await prisma.ai_table_sheet1.count({ where: { reply_date: { gte: startOfWeek } } })
+
+    const replyRate = total > 0 ? Math.round((replied / total) * 100) : 0
+
+    console.log("📊 Metrics:", { total, contacted, replyRate, repliedThisWeek })
+
+    return { total, contacted, replyRate, repliedThisWeek }
+  } catch (err){
+    console.error("❌ Error in getMetrics:", err)
+    return { total: 0, contacted: 0, replyRate: 0, repliedThisWeek: 0 }
+  }
+}
+
+async function getTrendData(): Promise<TrendPoint[]> {
+  noStore()
+  console.log("🟢 getTrendData called at", new Date().toISOString())
+  try {
+    const rows = await prisma.ai_table_sheet1.findMany({ select: { created_at: true } })
+    const map = new Map<string, number>()
+    for (const r of rows) {
+      if (!r.created_at) continue
+      const d = new Date(r.created_at)
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`
+      map.set(key, (map.get(key) || 0) + 1)
+    }
+    const sorted = Array.from(map.entries())
+      .sort(([a], [b]) => (a < b ? -1 : 1))
+      .map(([label, count]) => ({ label, count }))
+    console.log("📈 Trend data points:", sorted.length)
+    return sorted
+  } catch (err) {
+    console.error("❌ Error in getTrendData:", err)
+    return []
+  }
+}
+
+
+
+export default async function Home() {
+  console.log("🏠 Home render start", new Date().toISOString(), Math.random())
+
+  const [{ total, contacted, replyRate, repliedThisWeek }, trend] = await Promise.all([
+    getMetrics(),
+    getTrendData(),
+  ])
+
+  console.log("🏠 Home render end", new Date().toISOString())
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="container mx-auto max-w-7xl p-6 space-y-8">
+      <div className="flex justify-end">
+        <RefreshDataButton />
+      </div>
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader>
+            <CardTitle>Total Leads</CardTitle>
+          </CardHeader>
+          <CardContent className="text-3xl font-bold">{total}</CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Leads Contacted</CardTitle>
+          </CardHeader>
+          <CardContent className="text-3xl font-bold">{contacted}</CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Reply Rate</CardTitle>
+          </CardHeader>
+          <CardContent className="text-3xl font-bold">{replyRate}%</CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Replied This Week</CardTitle>
+          </CardHeader>
+          <CardContent className="text-3xl font-bold">{repliedThisWeek}</CardContent>
+        </Card>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <section>
+        <LeadTrendsChart title="Leads Added per Month" data={trend} />
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-base font-semibold">Leads</h2>
+        <LeadsTable />
+      </section>
     </div>
-  );
+  )
 }

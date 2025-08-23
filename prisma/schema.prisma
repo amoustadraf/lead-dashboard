@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ai_table_sheet1 {
+  ai_table_identifier String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  row_number          String?
+  first_name          String?
+  last_name           String?
+  email               String?
+  company             String?
+  title               String?
+  was_contacted       Boolean?
+  reply_date          DateTime? @db.Date
+  created_at          DateTime? @db.Timestamptz(6)
+}
