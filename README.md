@@ -1,9 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lead Dashboard
 
-## Getting Started
+A work-in-progress dashboard to manage and track sales leads. Built with Next.js, React, TypeScript, and a PostgreSQL database (Dockerized).
+The goal: make lead management more efficient by combining automation, data visualization, and (soon) AI-powered outreach.
 
-First, run the development server:
+## ⚠ Status
 
+🚧 Still under development. Core dashboard is functional, AI and Gmail integrations coming soon...
+
+## 📸 Demo
+
+![Screenshot](public/demo.png)  
+
+## Features (current)
+
+- Interactive dashboard with lead tracking table  
+- Add, edit, and manage leads directly in the interface  
+- Data stored in a PostgreSQL database (Dockerized)
+- Database schema managed with Prisma (Lead model, migrations)
+- Modern front-end stack (Next.js, React, TailwindCSS, shadcn/ui)
+
+## Upcoming Features (planned)
+
+- **AI-powered email generator**: automatically draft personalized outreach emails for each lead  
+- **Gmail integration**: send and track follow-up emails directly from the dashboard  
+- **Advanced analytics**: more KPIs such as response rates, conversion funnel, and owner performance  
+
+## Installation
+
+### Clone the repo
+
+```bash
+git clone https://github.com/amoustadraf/lead-dashboard.git
+cd lead-dashboard
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Set up environment
+
+Copy the example env and adjust if needed:
+```bash
+cp .env.example .env
+```
+.env.example:
+```bash
+DATABASE_URL="postgresql://postgres:PASSWORD@localhost:5432/lead_dashboard?schema=public"
+```
+### Start Postgres with Docker
+
+```bash
+docker compose up -d
+```
+This creates a lead_dashboard database inside the Postgres container.
+
+### Run Prisma migrations
+
+```bash
+npx prisma migrate dev --name init
+```
+This applies the schema (creates the Lead table, etc).
+
+### Run locally
 ```bash
 npm run dev
 # or
@@ -13,24 +74,16 @@ pnpm dev
 # or
 bun dev
 ```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Built With
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js, React, TypeScript, TailwindCSS, shadcn/ui
+- **Backend**: PostgreSQL (Dockerized)
+- **ORM**: Prisma
+- **Visualization**: Recharts
+- **Planned AI**: OpenAI API (personalized email generation)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📘 License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open-source and available under the [MIT License](LICENSE).
