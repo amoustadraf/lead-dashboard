@@ -14,10 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model ai_table_sheet1
+ * Model Lead
  * 
  */
-export type ai_table_sheet1 = $Result.DefaultSelection<Prisma.$ai_table_sheet1Payload>
+export type Lead = $Result.DefaultSelection<Prisma.$LeadPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -26,8 +26,8 @@ export type ai_table_sheet1 = $Result.DefaultSelection<Prisma.$ai_table_sheet1Pa
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Ai_table_sheet1s
- * const ai_table_sheet1s = await prisma.ai_table_sheet1.findMany()
+ * // Fetch zero or more Leads
+ * const leads = await prisma.lead.findMany()
  * ```
  *
  *
@@ -47,8 +47,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Ai_table_sheet1s
-   * const ai_table_sheet1s = await prisma.ai_table_sheet1.findMany()
+   * // Fetch zero or more Leads
+   * const leads = await prisma.lead.findMany()
    * ```
    *
    *
@@ -145,14 +145,14 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.ai_table_sheet1`: Exposes CRUD operations for the **ai_table_sheet1** model.
+   * `prisma.lead`: Exposes CRUD operations for the **Lead** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Ai_table_sheet1s
-    * const ai_table_sheet1s = await prisma.ai_table_sheet1.findMany()
+    * // Fetch zero or more Leads
+    * const leads = await prisma.lead.findMany()
     * ```
     */
-  get ai_table_sheet1(): Prisma.ai_table_sheet1Delegate<ExtArgs, ClientOptions>;
+  get lead(): Prisma.LeadDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +593,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    ai_table_sheet1: 'ai_table_sheet1'
+    Lead: 'Lead'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,81 +612,81 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "ai_table_sheet1"
+      modelProps: "lead"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      ai_table_sheet1: {
-        payload: Prisma.$ai_table_sheet1Payload<ExtArgs>
-        fields: Prisma.ai_table_sheet1FieldRefs
+      Lead: {
+        payload: Prisma.$LeadPayload<ExtArgs>
+        fields: Prisma.LeadFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ai_table_sheet1FindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload> | null
+            args: Prisma.LeadFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ai_table_sheet1FindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>
+            args: Prisma.LeadFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
           }
           findFirst: {
-            args: Prisma.ai_table_sheet1FindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload> | null
+            args: Prisma.LeadFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ai_table_sheet1FindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>
+            args: Prisma.LeadFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
           }
           findMany: {
-            args: Prisma.ai_table_sheet1FindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>[]
+            args: Prisma.LeadFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>[]
           }
           create: {
-            args: Prisma.ai_table_sheet1CreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>
+            args: Prisma.LeadCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
           }
           createMany: {
-            args: Prisma.ai_table_sheet1CreateManyArgs<ExtArgs>
+            args: Prisma.LeadCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.ai_table_sheet1CreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>[]
+            args: Prisma.LeadCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>[]
           }
           delete: {
-            args: Prisma.ai_table_sheet1DeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>
+            args: Prisma.LeadDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
           }
           update: {
-            args: Prisma.ai_table_sheet1UpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>
+            args: Prisma.LeadUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
           }
           deleteMany: {
-            args: Prisma.ai_table_sheet1DeleteManyArgs<ExtArgs>
+            args: Prisma.LeadDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ai_table_sheet1UpdateManyArgs<ExtArgs>
+            args: Prisma.LeadUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.ai_table_sheet1UpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>[]
+            args: Prisma.LeadUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>[]
           }
           upsert: {
-            args: Prisma.ai_table_sheet1UpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ai_table_sheet1Payload>
+            args: Prisma.LeadUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeadPayload>
           }
           aggregate: {
-            args: Prisma.Ai_table_sheet1AggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAi_table_sheet1>
+            args: Prisma.LeadAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLead>
           }
           groupBy: {
-            args: Prisma.ai_table_sheet1GroupByArgs<ExtArgs>
-            result: $Utils.Optional<Ai_table_sheet1GroupByOutputType>[]
+            args: Prisma.LeadGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LeadGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ai_table_sheet1CountArgs<ExtArgs>
-            result: $Utils.Optional<Ai_table_sheet1CountAggregateOutputType> | number
+            args: Prisma.LeadCountArgs<ExtArgs>
+            result: $Utils.Optional<LeadCountAggregateOutputType> | number
           }
         }
       }
@@ -782,7 +782,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    ai_table_sheet1?: ai_table_sheet1Omit
+    lead?: LeadOmit
   }
 
   /* Types for Logging */
@@ -883,18 +883,28 @@ export namespace Prisma {
    */
 
   /**
-   * Model ai_table_sheet1
+   * Model Lead
    */
 
-  export type AggregateAi_table_sheet1 = {
-    _count: Ai_table_sheet1CountAggregateOutputType | null
-    _min: Ai_table_sheet1MinAggregateOutputType | null
-    _max: Ai_table_sheet1MaxAggregateOutputType | null
+  export type AggregateLead = {
+    _count: LeadCountAggregateOutputType | null
+    _avg: LeadAvgAggregateOutputType | null
+    _sum: LeadSumAggregateOutputType | null
+    _min: LeadMinAggregateOutputType | null
+    _max: LeadMaxAggregateOutputType | null
   }
 
-  export type Ai_table_sheet1MinAggregateOutputType = {
-    ai_table_identifier: string | null
-    row_number: string | null
+  export type LeadAvgAggregateOutputType = {
+    row_number: number | null
+  }
+
+  export type LeadSumAggregateOutputType = {
+    row_number: number | null
+  }
+
+  export type LeadMinAggregateOutputType = {
+    id: string | null
+    row_number: number | null
     first_name: string | null
     last_name: string | null
     email: string | null
@@ -903,11 +913,14 @@ export namespace Prisma {
     was_contacted: boolean | null
     reply_date: Date | null
     created_at: Date | null
+    email_subject: string | null
+    email_body: string | null
+    email_sent: boolean | null
   }
 
-  export type Ai_table_sheet1MaxAggregateOutputType = {
-    ai_table_identifier: string | null
-    row_number: string | null
+  export type LeadMaxAggregateOutputType = {
+    id: string | null
+    row_number: number | null
     first_name: string | null
     last_name: string | null
     email: string | null
@@ -916,10 +929,13 @@ export namespace Prisma {
     was_contacted: boolean | null
     reply_date: Date | null
     created_at: Date | null
+    email_subject: string | null
+    email_body: string | null
+    email_sent: boolean | null
   }
 
-  export type Ai_table_sheet1CountAggregateOutputType = {
-    ai_table_identifier: number
+  export type LeadCountAggregateOutputType = {
+    id: number
     row_number: number
     first_name: number
     last_name: number
@@ -929,38 +945,23 @@ export namespace Prisma {
     was_contacted: number
     reply_date: number
     created_at: number
+    email_subject: number
+    email_body: number
+    email_sent: number
     _all: number
   }
 
 
-  export type Ai_table_sheet1MinAggregateInputType = {
-    ai_table_identifier?: true
+  export type LeadAvgAggregateInputType = {
     row_number?: true
-    first_name?: true
-    last_name?: true
-    email?: true
-    company?: true
-    title?: true
-    was_contacted?: true
-    reply_date?: true
-    created_at?: true
   }
 
-  export type Ai_table_sheet1MaxAggregateInputType = {
-    ai_table_identifier?: true
+  export type LeadSumAggregateInputType = {
     row_number?: true
-    first_name?: true
-    last_name?: true
-    email?: true
-    company?: true
-    title?: true
-    was_contacted?: true
-    reply_date?: true
-    created_at?: true
   }
 
-  export type Ai_table_sheet1CountAggregateInputType = {
-    ai_table_identifier?: true
+  export type LeadMinAggregateInputType = {
+    id?: true
     row_number?: true
     first_name?: true
     last_name?: true
@@ -970,84 +971,133 @@ export namespace Prisma {
     was_contacted?: true
     reply_date?: true
     created_at?: true
+    email_subject?: true
+    email_body?: true
+    email_sent?: true
+  }
+
+  export type LeadMaxAggregateInputType = {
+    id?: true
+    row_number?: true
+    first_name?: true
+    last_name?: true
+    email?: true
+    company?: true
+    title?: true
+    was_contacted?: true
+    reply_date?: true
+    created_at?: true
+    email_subject?: true
+    email_body?: true
+    email_sent?: true
+  }
+
+  export type LeadCountAggregateInputType = {
+    id?: true
+    row_number?: true
+    first_name?: true
+    last_name?: true
+    email?: true
+    company?: true
+    title?: true
+    was_contacted?: true
+    reply_date?: true
+    created_at?: true
+    email_subject?: true
+    email_body?: true
+    email_sent?: true
     _all?: true
   }
 
-  export type Ai_table_sheet1AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ai_table_sheet1 to aggregate.
+     * Filter which Lead to aggregate.
      */
-    where?: ai_table_sheet1WhereInput
+    where?: LeadWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ai_table_sheet1s to fetch.
+     * Determine the order of Leads to fetch.
      */
-    orderBy?: ai_table_sheet1OrderByWithRelationInput | ai_table_sheet1OrderByWithRelationInput[]
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ai_table_sheet1WhereUniqueInput
+    cursor?: LeadWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ai_table_sheet1s from the position of the cursor.
+     * Take `±n` Leads from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ai_table_sheet1s.
+     * Skip the first `n` Leads.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned ai_table_sheet1s
+     * Count returned Leads
     **/
-    _count?: true | Ai_table_sheet1CountAggregateInputType
+    _count?: true | LeadCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LeadAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LeadSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Ai_table_sheet1MinAggregateInputType
+    _min?: LeadMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Ai_table_sheet1MaxAggregateInputType
+    _max?: LeadMaxAggregateInputType
   }
 
-  export type GetAi_table_sheet1AggregateType<T extends Ai_table_sheet1AggregateArgs> = {
-        [P in keyof T & keyof AggregateAi_table_sheet1]: P extends '_count' | 'count'
+  export type GetLeadAggregateType<T extends LeadAggregateArgs> = {
+        [P in keyof T & keyof AggregateLead]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAi_table_sheet1[P]>
-      : GetScalarType<T[P], AggregateAi_table_sheet1[P]>
+        : GetScalarType<T[P], AggregateLead[P]>
+      : GetScalarType<T[P], AggregateLead[P]>
   }
 
 
 
 
-  export type ai_table_sheet1GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ai_table_sheet1WhereInput
-    orderBy?: ai_table_sheet1OrderByWithAggregationInput | ai_table_sheet1OrderByWithAggregationInput[]
-    by: Ai_table_sheet1ScalarFieldEnum[] | Ai_table_sheet1ScalarFieldEnum
-    having?: ai_table_sheet1ScalarWhereWithAggregatesInput
+  export type LeadGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LeadWhereInput
+    orderBy?: LeadOrderByWithAggregationInput | LeadOrderByWithAggregationInput[]
+    by: LeadScalarFieldEnum[] | LeadScalarFieldEnum
+    having?: LeadScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Ai_table_sheet1CountAggregateInputType | true
-    _min?: Ai_table_sheet1MinAggregateInputType
-    _max?: Ai_table_sheet1MaxAggregateInputType
+    _count?: LeadCountAggregateInputType | true
+    _avg?: LeadAvgAggregateInputType
+    _sum?: LeadSumAggregateInputType
+    _min?: LeadMinAggregateInputType
+    _max?: LeadMaxAggregateInputType
   }
 
-  export type Ai_table_sheet1GroupByOutputType = {
-    ai_table_identifier: string
-    row_number: string | null
+  export type LeadGroupByOutputType = {
+    id: string
+    row_number: number | null
     first_name: string | null
     last_name: string | null
     email: string | null
@@ -1055,28 +1105,33 @@ export namespace Prisma {
     title: string | null
     was_contacted: boolean | null
     reply_date: Date | null
-    created_at: Date | null
-    _count: Ai_table_sheet1CountAggregateOutputType | null
-    _min: Ai_table_sheet1MinAggregateOutputType | null
-    _max: Ai_table_sheet1MaxAggregateOutputType | null
+    created_at: Date
+    email_subject: string | null
+    email_body: string | null
+    email_sent: boolean | null
+    _count: LeadCountAggregateOutputType | null
+    _avg: LeadAvgAggregateOutputType | null
+    _sum: LeadSumAggregateOutputType | null
+    _min: LeadMinAggregateOutputType | null
+    _max: LeadMaxAggregateOutputType | null
   }
 
-  type GetAi_table_sheet1GroupByPayload<T extends ai_table_sheet1GroupByArgs> = Prisma.PrismaPromise<
+  type GetLeadGroupByPayload<T extends LeadGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Ai_table_sheet1GroupByOutputType, T['by']> &
+      PickEnumerable<LeadGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Ai_table_sheet1GroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof LeadGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Ai_table_sheet1GroupByOutputType[P]>
-            : GetScalarType<T[P], Ai_table_sheet1GroupByOutputType[P]>
+              : GetScalarType<T[P], LeadGroupByOutputType[P]>
+            : GetScalarType<T[P], LeadGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ai_table_sheet1Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ai_table_identifier?: boolean
+  export type LeadSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     row_number?: boolean
     first_name?: boolean
     last_name?: boolean
@@ -1086,10 +1141,13 @@ export namespace Prisma {
     was_contacted?: boolean
     reply_date?: boolean
     created_at?: boolean
-  }, ExtArgs["result"]["ai_table_sheet1"]>
+    email_subject?: boolean
+    email_body?: boolean
+    email_sent?: boolean
+  }, ExtArgs["result"]["lead"]>
 
-  export type ai_table_sheet1SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ai_table_identifier?: boolean
+  export type LeadSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     row_number?: boolean
     first_name?: boolean
     last_name?: boolean
@@ -1099,10 +1157,13 @@ export namespace Prisma {
     was_contacted?: boolean
     reply_date?: boolean
     created_at?: boolean
-  }, ExtArgs["result"]["ai_table_sheet1"]>
+    email_subject?: boolean
+    email_body?: boolean
+    email_sent?: boolean
+  }, ExtArgs["result"]["lead"]>
 
-  export type ai_table_sheet1SelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ai_table_identifier?: boolean
+  export type LeadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     row_number?: boolean
     first_name?: boolean
     last_name?: boolean
@@ -1112,10 +1173,13 @@ export namespace Prisma {
     was_contacted?: boolean
     reply_date?: boolean
     created_at?: boolean
-  }, ExtArgs["result"]["ai_table_sheet1"]>
+    email_subject?: boolean
+    email_body?: boolean
+    email_sent?: boolean
+  }, ExtArgs["result"]["lead"]>
 
-  export type ai_table_sheet1SelectScalar = {
-    ai_table_identifier?: boolean
+  export type LeadSelectScalar = {
+    id?: boolean
     row_number?: boolean
     first_name?: boolean
     last_name?: boolean
@@ -1125,16 +1189,19 @@ export namespace Prisma {
     was_contacted?: boolean
     reply_date?: boolean
     created_at?: boolean
+    email_subject?: boolean
+    email_body?: boolean
+    email_sent?: boolean
   }
 
-  export type ai_table_sheet1Omit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ai_table_identifier" | "row_number" | "first_name" | "last_name" | "email" | "company" | "title" | "was_contacted" | "reply_date" | "created_at", ExtArgs["result"]["ai_table_sheet1"]>
+  export type LeadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "row_number" | "first_name" | "last_name" | "email" | "company" | "title" | "was_contacted" | "reply_date" | "created_at" | "email_subject" | "email_body" | "email_sent", ExtArgs["result"]["lead"]>
 
-  export type $ai_table_sheet1Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ai_table_sheet1"
+  export type $LeadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Lead"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      ai_table_identifier: string
-      row_number: string | null
+      id: string
+      row_number: number | null
       first_name: string | null
       last_name: string | null
       email: string | null
@@ -1142,138 +1209,141 @@ export namespace Prisma {
       title: string | null
       was_contacted: boolean | null
       reply_date: Date | null
-      created_at: Date | null
-    }, ExtArgs["result"]["ai_table_sheet1"]>
+      created_at: Date
+      email_subject: string | null
+      email_body: string | null
+      email_sent: boolean | null
+    }, ExtArgs["result"]["lead"]>
     composites: {}
   }
 
-  type ai_table_sheet1GetPayload<S extends boolean | null | undefined | ai_table_sheet1DefaultArgs> = $Result.GetResult<Prisma.$ai_table_sheet1Payload, S>
+  type LeadGetPayload<S extends boolean | null | undefined | LeadDefaultArgs> = $Result.GetResult<Prisma.$LeadPayload, S>
 
-  type ai_table_sheet1CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ai_table_sheet1FindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Ai_table_sheet1CountAggregateInputType | true
+  type LeadCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LeadFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LeadCountAggregateInputType | true
     }
 
-  export interface ai_table_sheet1Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ai_table_sheet1'], meta: { name: 'ai_table_sheet1' } }
+  export interface LeadDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Lead'], meta: { name: 'Lead' } }
     /**
-     * Find zero or one Ai_table_sheet1 that matches the filter.
-     * @param {ai_table_sheet1FindUniqueArgs} args - Arguments to find a Ai_table_sheet1
+     * Find zero or one Lead that matches the filter.
+     * @param {LeadFindUniqueArgs} args - Arguments to find a Lead
      * @example
-     * // Get one Ai_table_sheet1
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.findUnique({
+     * // Get one Lead
+     * const lead = await prisma.lead.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ai_table_sheet1FindUniqueArgs>(args: SelectSubset<T, ai_table_sheet1FindUniqueArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends LeadFindUniqueArgs>(args: SelectSubset<T, LeadFindUniqueArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Ai_table_sheet1 that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Lead that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ai_table_sheet1FindUniqueOrThrowArgs} args - Arguments to find a Ai_table_sheet1
+     * @param {LeadFindUniqueOrThrowArgs} args - Arguments to find a Lead
      * @example
-     * // Get one Ai_table_sheet1
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.findUniqueOrThrow({
+     * // Get one Lead
+     * const lead = await prisma.lead.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ai_table_sheet1FindUniqueOrThrowArgs>(args: SelectSubset<T, ai_table_sheet1FindUniqueOrThrowArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends LeadFindUniqueOrThrowArgs>(args: SelectSubset<T, LeadFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Ai_table_sheet1 that matches the filter.
+     * Find the first Lead that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ai_table_sheet1FindFirstArgs} args - Arguments to find a Ai_table_sheet1
+     * @param {LeadFindFirstArgs} args - Arguments to find a Lead
      * @example
-     * // Get one Ai_table_sheet1
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.findFirst({
+     * // Get one Lead
+     * const lead = await prisma.lead.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ai_table_sheet1FindFirstArgs>(args?: SelectSubset<T, ai_table_sheet1FindFirstArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends LeadFindFirstArgs>(args?: SelectSubset<T, LeadFindFirstArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Ai_table_sheet1 that matches the filter or
+     * Find the first Lead that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ai_table_sheet1FindFirstOrThrowArgs} args - Arguments to find a Ai_table_sheet1
+     * @param {LeadFindFirstOrThrowArgs} args - Arguments to find a Lead
      * @example
-     * // Get one Ai_table_sheet1
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.findFirstOrThrow({
+     * // Get one Lead
+     * const lead = await prisma.lead.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ai_table_sheet1FindFirstOrThrowArgs>(args?: SelectSubset<T, ai_table_sheet1FindFirstOrThrowArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends LeadFindFirstOrThrowArgs>(args?: SelectSubset<T, LeadFindFirstOrThrowArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Ai_table_sheet1s that matches the filter.
+     * Find zero or more Leads that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ai_table_sheet1FindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {LeadFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Ai_table_sheet1s
-     * const ai_table_sheet1s = await prisma.ai_table_sheet1.findMany()
+     * // Get all Leads
+     * const leads = await prisma.lead.findMany()
      * 
-     * // Get first 10 Ai_table_sheet1s
-     * const ai_table_sheet1s = await prisma.ai_table_sheet1.findMany({ take: 10 })
+     * // Get first 10 Leads
+     * const leads = await prisma.lead.findMany({ take: 10 })
      * 
-     * // Only select the `ai_table_identifier`
-     * const ai_table_sheet1WithAi_table_identifierOnly = await prisma.ai_table_sheet1.findMany({ select: { ai_table_identifier: true } })
+     * // Only select the `id`
+     * const leadWithIdOnly = await prisma.lead.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ai_table_sheet1FindManyArgs>(args?: SelectSubset<T, ai_table_sheet1FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends LeadFindManyArgs>(args?: SelectSubset<T, LeadFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Ai_table_sheet1.
-     * @param {ai_table_sheet1CreateArgs} args - Arguments to create a Ai_table_sheet1.
+     * Create a Lead.
+     * @param {LeadCreateArgs} args - Arguments to create a Lead.
      * @example
-     * // Create one Ai_table_sheet1
-     * const Ai_table_sheet1 = await prisma.ai_table_sheet1.create({
+     * // Create one Lead
+     * const Lead = await prisma.lead.create({
      *   data: {
-     *     // ... data to create a Ai_table_sheet1
+     *     // ... data to create a Lead
      *   }
      * })
      * 
      */
-    create<T extends ai_table_sheet1CreateArgs>(args: SelectSubset<T, ai_table_sheet1CreateArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends LeadCreateArgs>(args: SelectSubset<T, LeadCreateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Ai_table_sheet1s.
-     * @param {ai_table_sheet1CreateManyArgs} args - Arguments to create many Ai_table_sheet1s.
+     * Create many Leads.
+     * @param {LeadCreateManyArgs} args - Arguments to create many Leads.
      * @example
-     * // Create many Ai_table_sheet1s
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.createMany({
+     * // Create many Leads
+     * const lead = await prisma.lead.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ai_table_sheet1CreateManyArgs>(args?: SelectSubset<T, ai_table_sheet1CreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends LeadCreateManyArgs>(args?: SelectSubset<T, LeadCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Ai_table_sheet1s and returns the data saved in the database.
-     * @param {ai_table_sheet1CreateManyAndReturnArgs} args - Arguments to create many Ai_table_sheet1s.
+     * Create many Leads and returns the data saved in the database.
+     * @param {LeadCreateManyAndReturnArgs} args - Arguments to create many Leads.
      * @example
-     * // Create many Ai_table_sheet1s
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.createManyAndReturn({
+     * // Create many Leads
+     * const lead = await prisma.lead.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Ai_table_sheet1s and only return the `ai_table_identifier`
-     * const ai_table_sheet1WithAi_table_identifierOnly = await prisma.ai_table_sheet1.createManyAndReturn({
-     *   select: { ai_table_identifier: true },
+     * // Create many Leads and only return the `id`
+     * const leadWithIdOnly = await prisma.lead.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -1282,28 +1352,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ai_table_sheet1CreateManyAndReturnArgs>(args?: SelectSubset<T, ai_table_sheet1CreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends LeadCreateManyAndReturnArgs>(args?: SelectSubset<T, LeadCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Ai_table_sheet1.
-     * @param {ai_table_sheet1DeleteArgs} args - Arguments to delete one Ai_table_sheet1.
+     * Delete a Lead.
+     * @param {LeadDeleteArgs} args - Arguments to delete one Lead.
      * @example
-     * // Delete one Ai_table_sheet1
-     * const Ai_table_sheet1 = await prisma.ai_table_sheet1.delete({
+     * // Delete one Lead
+     * const Lead = await prisma.lead.delete({
      *   where: {
-     *     // ... filter to delete one Ai_table_sheet1
+     *     // ... filter to delete one Lead
      *   }
      * })
      * 
      */
-    delete<T extends ai_table_sheet1DeleteArgs>(args: SelectSubset<T, ai_table_sheet1DeleteArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends LeadDeleteArgs>(args: SelectSubset<T, LeadDeleteArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Ai_table_sheet1.
-     * @param {ai_table_sheet1UpdateArgs} args - Arguments to update one Ai_table_sheet1.
+     * Update one Lead.
+     * @param {LeadUpdateArgs} args - Arguments to update one Lead.
      * @example
-     * // Update one Ai_table_sheet1
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.update({
+     * // Update one Lead
+     * const lead = await prisma.lead.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1313,30 +1383,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ai_table_sheet1UpdateArgs>(args: SelectSubset<T, ai_table_sheet1UpdateArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends LeadUpdateArgs>(args: SelectSubset<T, LeadUpdateArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Ai_table_sheet1s.
-     * @param {ai_table_sheet1DeleteManyArgs} args - Arguments to filter Ai_table_sheet1s to delete.
+     * Delete zero or more Leads.
+     * @param {LeadDeleteManyArgs} args - Arguments to filter Leads to delete.
      * @example
-     * // Delete a few Ai_table_sheet1s
-     * const { count } = await prisma.ai_table_sheet1.deleteMany({
+     * // Delete a few Leads
+     * const { count } = await prisma.lead.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ai_table_sheet1DeleteManyArgs>(args?: SelectSubset<T, ai_table_sheet1DeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends LeadDeleteManyArgs>(args?: SelectSubset<T, LeadDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Ai_table_sheet1s.
+     * Update zero or more Leads.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ai_table_sheet1UpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {LeadUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Ai_table_sheet1s
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.updateMany({
+     * // Update many Leads
+     * const lead = await prisma.lead.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1346,14 +1416,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ai_table_sheet1UpdateManyArgs>(args: SelectSubset<T, ai_table_sheet1UpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends LeadUpdateManyArgs>(args: SelectSubset<T, LeadUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Ai_table_sheet1s and returns the data updated in the database.
-     * @param {ai_table_sheet1UpdateManyAndReturnArgs} args - Arguments to update many Ai_table_sheet1s.
+     * Update zero or more Leads and returns the data updated in the database.
+     * @param {LeadUpdateManyAndReturnArgs} args - Arguments to update many Leads.
      * @example
-     * // Update many Ai_table_sheet1s
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.updateManyAndReturn({
+     * // Update many Leads
+     * const lead = await prisma.lead.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1362,9 +1432,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Ai_table_sheet1s and only return the `ai_table_identifier`
-     * const ai_table_sheet1WithAi_table_identifierOnly = await prisma.ai_table_sheet1.updateManyAndReturn({
-     *   select: { ai_table_identifier: true },
+     * // Update zero or more Leads and only return the `id`
+     * const leadWithIdOnly = await prisma.lead.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1376,56 +1446,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends ai_table_sheet1UpdateManyAndReturnArgs>(args: SelectSubset<T, ai_table_sheet1UpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends LeadUpdateManyAndReturnArgs>(args: SelectSubset<T, LeadUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Ai_table_sheet1.
-     * @param {ai_table_sheet1UpsertArgs} args - Arguments to update or create a Ai_table_sheet1.
+     * Create or update one Lead.
+     * @param {LeadUpsertArgs} args - Arguments to update or create a Lead.
      * @example
-     * // Update or create a Ai_table_sheet1
-     * const ai_table_sheet1 = await prisma.ai_table_sheet1.upsert({
+     * // Update or create a Lead
+     * const lead = await prisma.lead.upsert({
      *   create: {
-     *     // ... data to create a Ai_table_sheet1
+     *     // ... data to create a Lead
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Ai_table_sheet1 we want to update
+     *     // ... the filter for the Lead we want to update
      *   }
      * })
      */
-    upsert<T extends ai_table_sheet1UpsertArgs>(args: SelectSubset<T, ai_table_sheet1UpsertArgs<ExtArgs>>): Prisma__ai_table_sheet1Client<$Result.GetResult<Prisma.$ai_table_sheet1Payload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends LeadUpsertArgs>(args: SelectSubset<T, LeadUpsertArgs<ExtArgs>>): Prisma__LeadClient<$Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Ai_table_sheet1s.
+     * Count the number of Leads.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ai_table_sheet1CountArgs} args - Arguments to filter Ai_table_sheet1s to count.
+     * @param {LeadCountArgs} args - Arguments to filter Leads to count.
      * @example
-     * // Count the number of Ai_table_sheet1s
-     * const count = await prisma.ai_table_sheet1.count({
+     * // Count the number of Leads
+     * const count = await prisma.lead.count({
      *   where: {
-     *     // ... the filter for the Ai_table_sheet1s we want to count
+     *     // ... the filter for the Leads we want to count
      *   }
      * })
     **/
-    count<T extends ai_table_sheet1CountArgs>(
-      args?: Subset<T, ai_table_sheet1CountArgs>,
+    count<T extends LeadCountArgs>(
+      args?: Subset<T, LeadCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Ai_table_sheet1CountAggregateOutputType>
+          : GetScalarType<T['select'], LeadCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Ai_table_sheet1.
+     * Allows you to perform aggregations operations on a Lead.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Ai_table_sheet1AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {LeadAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1445,13 +1515,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Ai_table_sheet1AggregateArgs>(args: Subset<T, Ai_table_sheet1AggregateArgs>): Prisma.PrismaPromise<GetAi_table_sheet1AggregateType<T>>
+    aggregate<T extends LeadAggregateArgs>(args: Subset<T, LeadAggregateArgs>): Prisma.PrismaPromise<GetLeadAggregateType<T>>
 
     /**
-     * Group by Ai_table_sheet1.
+     * Group by Lead.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ai_table_sheet1GroupByArgs} args - Group by arguments.
+     * @param {LeadGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1466,14 +1536,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ai_table_sheet1GroupByArgs,
+      T extends LeadGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ai_table_sheet1GroupByArgs['orderBy'] }
-        : { orderBy?: ai_table_sheet1GroupByArgs['orderBy'] },
+        ? { orderBy: LeadGroupByArgs['orderBy'] }
+        : { orderBy?: LeadGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1522,20 +1592,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ai_table_sheet1GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAi_table_sheet1GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, LeadGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLeadGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the ai_table_sheet1 model
+   * Fields of the Lead model
    */
-  readonly fields: ai_table_sheet1FieldRefs;
+  readonly fields: LeadFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for ai_table_sheet1.
+   * The delegate class that acts as a "Promise-like" for Lead.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ai_table_sheet1Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__LeadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1563,382 +1633,385 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the ai_table_sheet1 model
+   * Fields of the Lead model
    */
-  interface ai_table_sheet1FieldRefs {
-    readonly ai_table_identifier: FieldRef<"ai_table_sheet1", 'String'>
-    readonly row_number: FieldRef<"ai_table_sheet1", 'String'>
-    readonly first_name: FieldRef<"ai_table_sheet1", 'String'>
-    readonly last_name: FieldRef<"ai_table_sheet1", 'String'>
-    readonly email: FieldRef<"ai_table_sheet1", 'String'>
-    readonly company: FieldRef<"ai_table_sheet1", 'String'>
-    readonly title: FieldRef<"ai_table_sheet1", 'String'>
-    readonly was_contacted: FieldRef<"ai_table_sheet1", 'Boolean'>
-    readonly reply_date: FieldRef<"ai_table_sheet1", 'DateTime'>
-    readonly created_at: FieldRef<"ai_table_sheet1", 'DateTime'>
+  interface LeadFieldRefs {
+    readonly id: FieldRef<"Lead", 'String'>
+    readonly row_number: FieldRef<"Lead", 'Int'>
+    readonly first_name: FieldRef<"Lead", 'String'>
+    readonly last_name: FieldRef<"Lead", 'String'>
+    readonly email: FieldRef<"Lead", 'String'>
+    readonly company: FieldRef<"Lead", 'String'>
+    readonly title: FieldRef<"Lead", 'String'>
+    readonly was_contacted: FieldRef<"Lead", 'Boolean'>
+    readonly reply_date: FieldRef<"Lead", 'DateTime'>
+    readonly created_at: FieldRef<"Lead", 'DateTime'>
+    readonly email_subject: FieldRef<"Lead", 'String'>
+    readonly email_body: FieldRef<"Lead", 'String'>
+    readonly email_sent: FieldRef<"Lead", 'Boolean'>
   }
     
 
   // Custom InputTypes
   /**
-   * ai_table_sheet1 findUnique
+   * Lead findUnique
    */
-  export type ai_table_sheet1FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * Filter, which ai_table_sheet1 to fetch.
+     * Filter, which Lead to fetch.
      */
-    where: ai_table_sheet1WhereUniqueInput
+    where: LeadWhereUniqueInput
   }
 
   /**
-   * ai_table_sheet1 findUniqueOrThrow
+   * Lead findUniqueOrThrow
    */
-  export type ai_table_sheet1FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * Filter, which ai_table_sheet1 to fetch.
+     * Filter, which Lead to fetch.
      */
-    where: ai_table_sheet1WhereUniqueInput
+    where: LeadWhereUniqueInput
   }
 
   /**
-   * ai_table_sheet1 findFirst
+   * Lead findFirst
    */
-  export type ai_table_sheet1FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * Filter, which ai_table_sheet1 to fetch.
+     * Filter, which Lead to fetch.
      */
-    where?: ai_table_sheet1WhereInput
+    where?: LeadWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ai_table_sheet1s to fetch.
+     * Determine the order of Leads to fetch.
      */
-    orderBy?: ai_table_sheet1OrderByWithRelationInput | ai_table_sheet1OrderByWithRelationInput[]
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ai_table_sheet1s.
+     * Sets the position for searching for Leads.
      */
-    cursor?: ai_table_sheet1WhereUniqueInput
+    cursor?: LeadWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ai_table_sheet1s from the position of the cursor.
+     * Take `±n` Leads from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ai_table_sheet1s.
+     * Skip the first `n` Leads.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ai_table_sheet1s.
+     * Filter by unique combinations of Leads.
      */
-    distinct?: Ai_table_sheet1ScalarFieldEnum | Ai_table_sheet1ScalarFieldEnum[]
+    distinct?: LeadScalarFieldEnum | LeadScalarFieldEnum[]
   }
 
   /**
-   * ai_table_sheet1 findFirstOrThrow
+   * Lead findFirstOrThrow
    */
-  export type ai_table_sheet1FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * Filter, which ai_table_sheet1 to fetch.
+     * Filter, which Lead to fetch.
      */
-    where?: ai_table_sheet1WhereInput
+    where?: LeadWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ai_table_sheet1s to fetch.
+     * Determine the order of Leads to fetch.
      */
-    orderBy?: ai_table_sheet1OrderByWithRelationInput | ai_table_sheet1OrderByWithRelationInput[]
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ai_table_sheet1s.
+     * Sets the position for searching for Leads.
      */
-    cursor?: ai_table_sheet1WhereUniqueInput
+    cursor?: LeadWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ai_table_sheet1s from the position of the cursor.
+     * Take `±n` Leads from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ai_table_sheet1s.
+     * Skip the first `n` Leads.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ai_table_sheet1s.
+     * Filter by unique combinations of Leads.
      */
-    distinct?: Ai_table_sheet1ScalarFieldEnum | Ai_table_sheet1ScalarFieldEnum[]
+    distinct?: LeadScalarFieldEnum | LeadScalarFieldEnum[]
   }
 
   /**
-   * ai_table_sheet1 findMany
+   * Lead findMany
    */
-  export type ai_table_sheet1FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * Filter, which ai_table_sheet1s to fetch.
+     * Filter, which Leads to fetch.
      */
-    where?: ai_table_sheet1WhereInput
+    where?: LeadWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ai_table_sheet1s to fetch.
+     * Determine the order of Leads to fetch.
      */
-    orderBy?: ai_table_sheet1OrderByWithRelationInput | ai_table_sheet1OrderByWithRelationInput[]
+    orderBy?: LeadOrderByWithRelationInput | LeadOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing ai_table_sheet1s.
+     * Sets the position for listing Leads.
      */
-    cursor?: ai_table_sheet1WhereUniqueInput
+    cursor?: LeadWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ai_table_sheet1s from the position of the cursor.
+     * Take `±n` Leads from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ai_table_sheet1s.
+     * Skip the first `n` Leads.
      */
     skip?: number
-    distinct?: Ai_table_sheet1ScalarFieldEnum | Ai_table_sheet1ScalarFieldEnum[]
+    distinct?: LeadScalarFieldEnum | LeadScalarFieldEnum[]
   }
 
   /**
-   * ai_table_sheet1 create
+   * Lead create
    */
-  export type ai_table_sheet1CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * The data needed to create a ai_table_sheet1.
+     * The data needed to create a Lead.
      */
-    data?: XOR<ai_table_sheet1CreateInput, ai_table_sheet1UncheckedCreateInput>
+    data?: XOR<LeadCreateInput, LeadUncheckedCreateInput>
   }
 
   /**
-   * ai_table_sheet1 createMany
+   * Lead createMany
    */
-  export type ai_table_sheet1CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many ai_table_sheet1s.
+     * The data used to create many Leads.
      */
-    data: ai_table_sheet1CreateManyInput | ai_table_sheet1CreateManyInput[]
+    data: LeadCreateManyInput | LeadCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * ai_table_sheet1 createManyAndReturn
+   * Lead createManyAndReturn
    */
-  export type ai_table_sheet1CreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1SelectCreateManyAndReturn<ExtArgs> | null
+    select?: LeadSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * The data used to create many ai_table_sheet1s.
+     * The data used to create many Leads.
      */
-    data: ai_table_sheet1CreateManyInput | ai_table_sheet1CreateManyInput[]
+    data: LeadCreateManyInput | LeadCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * ai_table_sheet1 update
+   * Lead update
    */
-  export type ai_table_sheet1UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * The data needed to update a ai_table_sheet1.
+     * The data needed to update a Lead.
      */
-    data: XOR<ai_table_sheet1UpdateInput, ai_table_sheet1UncheckedUpdateInput>
+    data: XOR<LeadUpdateInput, LeadUncheckedUpdateInput>
     /**
-     * Choose, which ai_table_sheet1 to update.
+     * Choose, which Lead to update.
      */
-    where: ai_table_sheet1WhereUniqueInput
+    where: LeadWhereUniqueInput
   }
 
   /**
-   * ai_table_sheet1 updateMany
+   * Lead updateMany
    */
-  export type ai_table_sheet1UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update ai_table_sheet1s.
+     * The data used to update Leads.
      */
-    data: XOR<ai_table_sheet1UpdateManyMutationInput, ai_table_sheet1UncheckedUpdateManyInput>
+    data: XOR<LeadUpdateManyMutationInput, LeadUncheckedUpdateManyInput>
     /**
-     * Filter which ai_table_sheet1s to update
+     * Filter which Leads to update
      */
-    where?: ai_table_sheet1WhereInput
+    where?: LeadWhereInput
     /**
-     * Limit how many ai_table_sheet1s to update.
+     * Limit how many Leads to update.
      */
     limit?: number
   }
 
   /**
-   * ai_table_sheet1 updateManyAndReturn
+   * Lead updateManyAndReturn
    */
-  export type ai_table_sheet1UpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1SelectUpdateManyAndReturn<ExtArgs> | null
+    select?: LeadSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * The data used to update ai_table_sheet1s.
+     * The data used to update Leads.
      */
-    data: XOR<ai_table_sheet1UpdateManyMutationInput, ai_table_sheet1UncheckedUpdateManyInput>
+    data: XOR<LeadUpdateManyMutationInput, LeadUncheckedUpdateManyInput>
     /**
-     * Filter which ai_table_sheet1s to update
+     * Filter which Leads to update
      */
-    where?: ai_table_sheet1WhereInput
+    where?: LeadWhereInput
     /**
-     * Limit how many ai_table_sheet1s to update.
+     * Limit how many Leads to update.
      */
     limit?: number
   }
 
   /**
-   * ai_table_sheet1 upsert
+   * Lead upsert
    */
-  export type ai_table_sheet1UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * The filter to search for the ai_table_sheet1 to update in case it exists.
+     * The filter to search for the Lead to update in case it exists.
      */
-    where: ai_table_sheet1WhereUniqueInput
+    where: LeadWhereUniqueInput
     /**
-     * In case the ai_table_sheet1 found by the `where` argument doesn't exist, create a new ai_table_sheet1 with this data.
+     * In case the Lead found by the `where` argument doesn't exist, create a new Lead with this data.
      */
-    create: XOR<ai_table_sheet1CreateInput, ai_table_sheet1UncheckedCreateInput>
+    create: XOR<LeadCreateInput, LeadUncheckedCreateInput>
     /**
-     * In case the ai_table_sheet1 was found with the provided `where` argument, update it with this data.
+     * In case the Lead was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ai_table_sheet1UpdateInput, ai_table_sheet1UncheckedUpdateInput>
+    update: XOR<LeadUpdateInput, LeadUncheckedUpdateInput>
   }
 
   /**
-   * ai_table_sheet1 delete
+   * Lead delete
    */
-  export type ai_table_sheet1DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
     /**
-     * Filter which ai_table_sheet1 to delete.
+     * Filter which Lead to delete.
      */
-    where: ai_table_sheet1WhereUniqueInput
+    where: LeadWhereUniqueInput
   }
 
   /**
-   * ai_table_sheet1 deleteMany
+   * Lead deleteMany
    */
-  export type ai_table_sheet1DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ai_table_sheet1s to delete
+     * Filter which Leads to delete
      */
-    where?: ai_table_sheet1WhereInput
+    where?: LeadWhereInput
     /**
-     * Limit how many ai_table_sheet1s to delete.
+     * Limit how many Leads to delete.
      */
     limit?: number
   }
 
   /**
-   * ai_table_sheet1 without action
+   * Lead without action
    */
-  export type ai_table_sheet1DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type LeadDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ai_table_sheet1
+     * Select specific fields to fetch from the Lead
      */
-    select?: ai_table_sheet1Select<ExtArgs> | null
+    select?: LeadSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ai_table_sheet1
+     * Omit specific fields from the Lead
      */
-    omit?: ai_table_sheet1Omit<ExtArgs> | null
+    omit?: LeadOmit<ExtArgs> | null
   }
 
 
@@ -1956,8 +2029,8 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const Ai_table_sheet1ScalarFieldEnum: {
-    ai_table_identifier: 'ai_table_identifier',
+  export const LeadScalarFieldEnum: {
+    id: 'id',
     row_number: 'row_number',
     first_name: 'first_name',
     last_name: 'last_name',
@@ -1966,10 +2039,13 @@ export namespace Prisma {
     title: 'title',
     was_contacted: 'was_contacted',
     reply_date: 'reply_date',
-    created_at: 'created_at'
+    created_at: 'created_at',
+    email_subject: 'email_subject',
+    email_body: 'email_body',
+    email_sent: 'email_sent'
   };
 
-  export type Ai_table_sheet1ScalarFieldEnum = (typeof Ai_table_sheet1ScalarFieldEnum)[keyof typeof Ai_table_sheet1ScalarFieldEnum]
+  export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2016,6 +2092,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -2037,40 +2127,43 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Float'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'Float[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
    */
 
 
-  export type ai_table_sheet1WhereInput = {
-    AND?: ai_table_sheet1WhereInput | ai_table_sheet1WhereInput[]
-    OR?: ai_table_sheet1WhereInput[]
-    NOT?: ai_table_sheet1WhereInput | ai_table_sheet1WhereInput[]
-    ai_table_identifier?: UuidFilter<"ai_table_sheet1"> | string
-    row_number?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    first_name?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    last_name?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    email?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    company?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    title?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    was_contacted?: BoolNullableFilter<"ai_table_sheet1"> | boolean | null
-    reply_date?: DateTimeNullableFilter<"ai_table_sheet1"> | Date | string | null
-    created_at?: DateTimeNullableFilter<"ai_table_sheet1"> | Date | string | null
+  export type LeadWhereInput = {
+    AND?: LeadWhereInput | LeadWhereInput[]
+    OR?: LeadWhereInput[]
+    NOT?: LeadWhereInput | LeadWhereInput[]
+    id?: UuidFilter<"Lead"> | string
+    row_number?: IntNullableFilter<"Lead"> | number | null
+    first_name?: StringNullableFilter<"Lead"> | string | null
+    last_name?: StringNullableFilter<"Lead"> | string | null
+    email?: StringNullableFilter<"Lead"> | string | null
+    company?: StringNullableFilter<"Lead"> | string | null
+    title?: StringNullableFilter<"Lead"> | string | null
+    was_contacted?: BoolNullableFilter<"Lead"> | boolean | null
+    reply_date?: DateTimeNullableFilter<"Lead"> | Date | string | null
+    created_at?: DateTimeFilter<"Lead"> | Date | string
+    email_subject?: StringNullableFilter<"Lead"> | string | null
+    email_body?: StringNullableFilter<"Lead"> | string | null
+    email_sent?: BoolNullableFilter<"Lead"> | boolean | null
   }
 
-  export type ai_table_sheet1OrderByWithRelationInput = {
-    ai_table_identifier?: SortOrder
+  export type LeadOrderByWithRelationInput = {
+    id?: SortOrder
     row_number?: SortOrderInput | SortOrder
     first_name?: SortOrderInput | SortOrder
     last_name?: SortOrderInput | SortOrder
@@ -2079,27 +2172,33 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     was_contacted?: SortOrderInput | SortOrder
     reply_date?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    email_subject?: SortOrderInput | SortOrder
+    email_body?: SortOrderInput | SortOrder
+    email_sent?: SortOrderInput | SortOrder
   }
 
-  export type ai_table_sheet1WhereUniqueInput = Prisma.AtLeast<{
-    ai_table_identifier?: string
-    AND?: ai_table_sheet1WhereInput | ai_table_sheet1WhereInput[]
-    OR?: ai_table_sheet1WhereInput[]
-    NOT?: ai_table_sheet1WhereInput | ai_table_sheet1WhereInput[]
-    row_number?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    first_name?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    last_name?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    email?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    company?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    title?: StringNullableFilter<"ai_table_sheet1"> | string | null
-    was_contacted?: BoolNullableFilter<"ai_table_sheet1"> | boolean | null
-    reply_date?: DateTimeNullableFilter<"ai_table_sheet1"> | Date | string | null
-    created_at?: DateTimeNullableFilter<"ai_table_sheet1"> | Date | string | null
-  }, "ai_table_identifier">
+  export type LeadWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LeadWhereInput | LeadWhereInput[]
+    OR?: LeadWhereInput[]
+    NOT?: LeadWhereInput | LeadWhereInput[]
+    row_number?: IntNullableFilter<"Lead"> | number | null
+    first_name?: StringNullableFilter<"Lead"> | string | null
+    last_name?: StringNullableFilter<"Lead"> | string | null
+    email?: StringNullableFilter<"Lead"> | string | null
+    company?: StringNullableFilter<"Lead"> | string | null
+    title?: StringNullableFilter<"Lead"> | string | null
+    was_contacted?: BoolNullableFilter<"Lead"> | boolean | null
+    reply_date?: DateTimeNullableFilter<"Lead"> | Date | string | null
+    created_at?: DateTimeFilter<"Lead"> | Date | string
+    email_subject?: StringNullableFilter<"Lead"> | string | null
+    email_body?: StringNullableFilter<"Lead"> | string | null
+    email_sent?: BoolNullableFilter<"Lead"> | boolean | null
+  }, "id">
 
-  export type ai_table_sheet1OrderByWithAggregationInput = {
-    ai_table_identifier?: SortOrder
+  export type LeadOrderByWithAggregationInput = {
+    id?: SortOrder
     row_number?: SortOrderInput | SortOrder
     first_name?: SortOrderInput | SortOrder
     last_name?: SortOrderInput | SortOrder
@@ -2108,31 +2207,39 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     was_contacted?: SortOrderInput | SortOrder
     reply_date?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
-    _count?: ai_table_sheet1CountOrderByAggregateInput
-    _max?: ai_table_sheet1MaxOrderByAggregateInput
-    _min?: ai_table_sheet1MinOrderByAggregateInput
+    created_at?: SortOrder
+    email_subject?: SortOrderInput | SortOrder
+    email_body?: SortOrderInput | SortOrder
+    email_sent?: SortOrderInput | SortOrder
+    _count?: LeadCountOrderByAggregateInput
+    _avg?: LeadAvgOrderByAggregateInput
+    _max?: LeadMaxOrderByAggregateInput
+    _min?: LeadMinOrderByAggregateInput
+    _sum?: LeadSumOrderByAggregateInput
   }
 
-  export type ai_table_sheet1ScalarWhereWithAggregatesInput = {
-    AND?: ai_table_sheet1ScalarWhereWithAggregatesInput | ai_table_sheet1ScalarWhereWithAggregatesInput[]
-    OR?: ai_table_sheet1ScalarWhereWithAggregatesInput[]
-    NOT?: ai_table_sheet1ScalarWhereWithAggregatesInput | ai_table_sheet1ScalarWhereWithAggregatesInput[]
-    ai_table_identifier?: UuidWithAggregatesFilter<"ai_table_sheet1"> | string
-    row_number?: StringNullableWithAggregatesFilter<"ai_table_sheet1"> | string | null
-    first_name?: StringNullableWithAggregatesFilter<"ai_table_sheet1"> | string | null
-    last_name?: StringNullableWithAggregatesFilter<"ai_table_sheet1"> | string | null
-    email?: StringNullableWithAggregatesFilter<"ai_table_sheet1"> | string | null
-    company?: StringNullableWithAggregatesFilter<"ai_table_sheet1"> | string | null
-    title?: StringNullableWithAggregatesFilter<"ai_table_sheet1"> | string | null
-    was_contacted?: BoolNullableWithAggregatesFilter<"ai_table_sheet1"> | boolean | null
-    reply_date?: DateTimeNullableWithAggregatesFilter<"ai_table_sheet1"> | Date | string | null
-    created_at?: DateTimeNullableWithAggregatesFilter<"ai_table_sheet1"> | Date | string | null
+  export type LeadScalarWhereWithAggregatesInput = {
+    AND?: LeadScalarWhereWithAggregatesInput | LeadScalarWhereWithAggregatesInput[]
+    OR?: LeadScalarWhereWithAggregatesInput[]
+    NOT?: LeadScalarWhereWithAggregatesInput | LeadScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"Lead"> | string
+    row_number?: IntNullableWithAggregatesFilter<"Lead"> | number | null
+    first_name?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    last_name?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    email?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    company?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    title?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    was_contacted?: BoolNullableWithAggregatesFilter<"Lead"> | boolean | null
+    reply_date?: DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
+    created_at?: DateTimeWithAggregatesFilter<"Lead"> | Date | string
+    email_subject?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    email_body?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    email_sent?: BoolNullableWithAggregatesFilter<"Lead"> | boolean | null
   }
 
-  export type ai_table_sheet1CreateInput = {
-    ai_table_identifier?: string
-    row_number?: string | null
+  export type LeadCreateInput = {
+    id?: string
+    row_number?: number | null
     first_name?: string | null
     last_name?: string | null
     email?: string | null
@@ -2140,12 +2247,15 @@ export namespace Prisma {
     title?: string | null
     was_contacted?: boolean | null
     reply_date?: Date | string | null
-    created_at?: Date | string | null
+    created_at?: Date | string
+    email_subject?: string | null
+    email_body?: string | null
+    email_sent?: boolean | null
   }
 
-  export type ai_table_sheet1UncheckedCreateInput = {
-    ai_table_identifier?: string
-    row_number?: string | null
+  export type LeadUncheckedCreateInput = {
+    id?: string
+    row_number?: number | null
     first_name?: string | null
     last_name?: string | null
     email?: string | null
@@ -2153,12 +2263,15 @@ export namespace Prisma {
     title?: string | null
     was_contacted?: boolean | null
     reply_date?: Date | string | null
-    created_at?: Date | string | null
+    created_at?: Date | string
+    email_subject?: string | null
+    email_body?: string | null
+    email_sent?: boolean | null
   }
 
-  export type ai_table_sheet1UpdateInput = {
-    ai_table_identifier?: StringFieldUpdateOperationsInput | string
-    row_number?: NullableStringFieldUpdateOperationsInput | string | null
+  export type LeadUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    row_number?: NullableIntFieldUpdateOperationsInput | number | null
     first_name?: NullableStringFieldUpdateOperationsInput | string | null
     last_name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -2166,12 +2279,15 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     was_contacted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     reply_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    email_subject?: NullableStringFieldUpdateOperationsInput | string | null
+    email_body?: NullableStringFieldUpdateOperationsInput | string | null
+    email_sent?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
-  export type ai_table_sheet1UncheckedUpdateInput = {
-    ai_table_identifier?: StringFieldUpdateOperationsInput | string
-    row_number?: NullableStringFieldUpdateOperationsInput | string | null
+  export type LeadUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    row_number?: NullableIntFieldUpdateOperationsInput | number | null
     first_name?: NullableStringFieldUpdateOperationsInput | string | null
     last_name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -2179,12 +2295,15 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     was_contacted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     reply_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    email_subject?: NullableStringFieldUpdateOperationsInput | string | null
+    email_body?: NullableStringFieldUpdateOperationsInput | string | null
+    email_sent?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
-  export type ai_table_sheet1CreateManyInput = {
-    ai_table_identifier?: string
-    row_number?: string | null
+  export type LeadCreateManyInput = {
+    id?: string
+    row_number?: number | null
     first_name?: string | null
     last_name?: string | null
     email?: string | null
@@ -2192,12 +2311,15 @@ export namespace Prisma {
     title?: string | null
     was_contacted?: boolean | null
     reply_date?: Date | string | null
-    created_at?: Date | string | null
+    created_at?: Date | string
+    email_subject?: string | null
+    email_body?: string | null
+    email_sent?: boolean | null
   }
 
-  export type ai_table_sheet1UpdateManyMutationInput = {
-    ai_table_identifier?: StringFieldUpdateOperationsInput | string
-    row_number?: NullableStringFieldUpdateOperationsInput | string | null
+  export type LeadUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    row_number?: NullableIntFieldUpdateOperationsInput | number | null
     first_name?: NullableStringFieldUpdateOperationsInput | string | null
     last_name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -2205,12 +2327,15 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     was_contacted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     reply_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    email_subject?: NullableStringFieldUpdateOperationsInput | string | null
+    email_body?: NullableStringFieldUpdateOperationsInput | string | null
+    email_sent?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
-  export type ai_table_sheet1UncheckedUpdateManyInput = {
-    ai_table_identifier?: StringFieldUpdateOperationsInput | string
-    row_number?: NullableStringFieldUpdateOperationsInput | string | null
+  export type LeadUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    row_number?: NullableIntFieldUpdateOperationsInput | number | null
     first_name?: NullableStringFieldUpdateOperationsInput | string | null
     last_name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -2218,7 +2343,10 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     was_contacted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     reply_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    email_subject?: NullableStringFieldUpdateOperationsInput | string | null
+    email_body?: NullableStringFieldUpdateOperationsInput | string | null
+    email_sent?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -2231,6 +2359,17 @@ export namespace Prisma {
     gte?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedUuidFilter<$PrismaModel> | string
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -2264,13 +2403,24 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
-  export type ai_table_sheet1CountOrderByAggregateInput = {
-    ai_table_identifier?: SortOrder
+  export type LeadCountOrderByAggregateInput = {
+    id?: SortOrder
     row_number?: SortOrder
     first_name?: SortOrder
     last_name?: SortOrder
@@ -2280,23 +2430,17 @@ export namespace Prisma {
     was_contacted?: SortOrder
     reply_date?: SortOrder
     created_at?: SortOrder
+    email_subject?: SortOrder
+    email_body?: SortOrder
+    email_sent?: SortOrder
   }
 
-  export type ai_table_sheet1MaxOrderByAggregateInput = {
-    ai_table_identifier?: SortOrder
+  export type LeadAvgOrderByAggregateInput = {
     row_number?: SortOrder
-    first_name?: SortOrder
-    last_name?: SortOrder
-    email?: SortOrder
-    company?: SortOrder
-    title?: SortOrder
-    was_contacted?: SortOrder
-    reply_date?: SortOrder
-    created_at?: SortOrder
   }
 
-  export type ai_table_sheet1MinOrderByAggregateInput = {
-    ai_table_identifier?: SortOrder
+  export type LeadMaxOrderByAggregateInput = {
+    id?: SortOrder
     row_number?: SortOrder
     first_name?: SortOrder
     last_name?: SortOrder
@@ -2306,6 +2450,29 @@ export namespace Prisma {
     was_contacted?: SortOrder
     reply_date?: SortOrder
     created_at?: SortOrder
+    email_subject?: SortOrder
+    email_body?: SortOrder
+    email_sent?: SortOrder
+  }
+
+  export type LeadMinOrderByAggregateInput = {
+    id?: SortOrder
+    row_number?: SortOrder
+    first_name?: SortOrder
+    last_name?: SortOrder
+    email?: SortOrder
+    company?: SortOrder
+    title?: SortOrder
+    was_contacted?: SortOrder
+    reply_date?: SortOrder
+    created_at?: SortOrder
+    email_subject?: SortOrder
+    email_body?: SortOrder
+    email_sent?: SortOrder
+  }
+
+  export type LeadSumOrderByAggregateInput = {
+    row_number?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -2321,6 +2488,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -2363,8 +2546,30 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -2379,6 +2584,10 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type NestedUuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -2388,6 +2597,17 @@ export namespace Prisma {
     gt?: string | StringFieldRefInput<$PrismaModel>
     gte?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedUuidFilter<$PrismaModel> | string
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -2418,6 +2638,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -2459,6 +2690,33 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -2474,17 +2732,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -2507,6 +2754,20 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
 

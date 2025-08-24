@@ -41,7 +41,7 @@ export async function GET(req: Request) {
     const url = new URL(req.url)
     const { q, status, sortBy, sortDir, page, pageSize } = parseParams(url)
 
-    const where: Prisma.ai_table_sheet1WhereInput = {
+    const where: Prisma.LeadWhereInput = {
       AND: [
         q
           ? {
@@ -61,17 +61,17 @@ export async function GET(req: Request) {
     const skip = (page - 1) * pageSize
     const take = pageSize
 
-    const orderBy = { [sortBy]: sortDir } as Prisma.ai_table_sheet1OrderByWithRelationInput
+    const orderBy = { [sortBy]: sortDir } as Prisma.LeadOrderByWithRelationInput
 
     const [total, items] = await Promise.all([
-      prisma.ai_table_sheet1.count({ where }),
-      prisma.ai_table_sheet1.findMany({
+      prisma.lead.count({ where }),
+      prisma.lead.findMany({
         where,
         orderBy,
         skip,
         take,
         select: {
-          ai_table_identifier: true,
+          id: true,
           row_number: true,
           first_name: true,
           last_name: true,
@@ -81,6 +81,9 @@ export async function GET(req: Request) {
           was_contacted: true,
           reply_date: true,
           created_at: true,
+          email_subject: true,
+          email_body: true,
+          email_sent: true,
         },
       }),
     ])
@@ -91,5 +94,33 @@ export async function GET(req: Request) {
   } catch (error) {
     console.error("/api/leads error", error)
     return NextResponse.json({ error: "Failed to fetch leads" }, { status: 500 })
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json()
+    const { firstName, lastName, email, company, title } = body
+
+    if (!firstName || !lastName || !email) {
+      return NextResponse.json({ error: "Missing required fields: firstName, lastName, email" }, { status: 400 })
+    }
+
+    const newLead = await prisma.lead.create({
+      data: {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        company,
+        title,
+        was_contacted: false, // Default to false for new leads
+        created_at: new Date(),
+      },
+    })
+
+    return NextResponse.json(newLead, { status: 201 })
+  } catch (error) {
+    console.error("Failed to add lead:", error)
+    return NextResponse.json({ error: "Failed to add lead" }, { status: 500 })
   }
 } 

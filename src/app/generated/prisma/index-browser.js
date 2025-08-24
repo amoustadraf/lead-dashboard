@@ -120,8 +120,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.Ai_table_sheet1ScalarFieldEnum = {
-  ai_table_identifier: 'ai_table_identifier',
+exports.Prisma.LeadScalarFieldEnum = {
+  id: 'id',
   row_number: 'row_number',
   first_name: 'first_name',
   last_name: 'last_name',
@@ -130,7 +130,10 @@ exports.Prisma.Ai_table_sheet1ScalarFieldEnum = {
   title: 'title',
   was_contacted: 'was_contacted',
   reply_date: 'reply_date',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  email_subject: 'email_subject',
+  email_body: 'email_body',
+  email_sent: 'email_sent'
 };
 
 exports.Prisma.SortOrder = {
@@ -150,7 +153,7 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  ai_table_sheet1: 'ai_table_sheet1'
+  Lead: 'Lead'
 };
 
 /**

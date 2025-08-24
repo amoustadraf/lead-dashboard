@@ -6,7 +6,10 @@ export const fetchCache = "force-no-store"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { LeadTrendsChart, type TrendPoint } from "@/components/LeadTrendsChart"
 import { LeadsTable } from "@/components/LeadsTable"
-import RefreshDataButton from "@/components/RefreshDataButton"
+import AddLeadButton from "@/components/AddLeadButton"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { AddLeadForm } from "@/components/AddLeadForm"
 
 async function getMetrics() {
   noStore()
@@ -14,9 +17,9 @@ async function getMetrics() {
 
   try {
     const [total, contacted, replied] = await Promise.all([
-      prisma.ai_table_sheet1.count(),
-      prisma.ai_table_sheet1.count({ where: { was_contacted: { equals: true } } }),
-      prisma.ai_table_sheet1.count({ where: { reply_date: { not: null } } }),
+      prisma.lead.count(),
+      prisma.lead.count({ where: { was_contacted: { equals: true } } }),
+      prisma.lead.count({ where: { reply_date: { not: null } } }),
     ])
 
     const startOfWeek = (() => {
@@ -28,7 +31,7 @@ async function getMetrics() {
       return sow
     })()
 
-    const repliedThisWeek = await prisma.ai_table_sheet1.count({ where: { reply_date: { gte: startOfWeek } } })
+    const repliedThisWeek = await prisma.lead.count({ where: { reply_date: { gte: startOfWeek } } })
 
     const replyRate = total > 0 ? Math.round((replied / total) * 100) : 0
 
@@ -45,7 +48,7 @@ async function getTrendData(): Promise<TrendPoint[]> {
   noStore()
   console.log("🟢 getTrendData called at", new Date().toISOString())
   try {
-    const rows = await prisma.ai_table_sheet1.findMany({ select: { created_at: true } })
+    const rows = await prisma.lead.findMany({ select: { created_at: true } })
     const map = new Map<string, number>()
     for (const r of rows) {
       if (!r.created_at) continue
@@ -79,7 +82,7 @@ export default async function Home() {
   return (
     <div className="container mx-auto max-w-7xl p-6 space-y-8">
       <div className="flex justify-end">
-        <RefreshDataButton />
+        {/* Removed Add Lead Dialog and Button */}
       </div>
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
@@ -114,8 +117,9 @@ export default async function Home() {
 
       <section className="space-y-4">
         <h2 className="text-base font-semibold">Leads</h2>
-        <LeadsTable />
+        <LeadsTable totalLeads={total} />
       </section>
+      
     </div>
   )
 }
