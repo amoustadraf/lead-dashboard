@@ -140,6 +140,14 @@ export function LeadsTable({ totalLeads }: LeadsTableProps) {
     setSelectedLead(null)
   }
 
+  function handleSaved(updated: Lead) {
+    setItems(prev =>
+      prev.map(l => (l.id === updated.id ? { ...l, ...updated } : l))
+    )
+    // keep selectedLead in sync if dialog stays open for any reason
+    setSelectedLead(prev => (prev?.id === updated.id ? { ...prev, ...updated } : prev))
+  }
+  
   // TODO: Implement actual send email functionality
   function onSendEmail(leadId: string) {
     toast.info(`Simulating sending email to lead ${leadId}`)
@@ -285,11 +293,14 @@ export function LeadsTable({ totalLeads }: LeadsTableProps) {
           <div className="text-xs text-muted-foreground">{totalLeads} leads</div>
         )}
       </div>
+
+      
       {selectedLead && (
         <EditLeadDialog
           lead={selectedLead}
           isOpen={isEditDialogOpen}
           onClose={onCloseEditDialog}
+          onSaved={handleSaved}
         />
       )}
     </div>

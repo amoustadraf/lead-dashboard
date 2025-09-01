@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "sonner"
+import { DatePicker } from "@/components/ui/date-picker";
 
 interface Lead {
   id: string
@@ -19,18 +20,16 @@ interface Lead {
   title: string | null
   was_contacted: boolean | null
   reply_date: Date | null
-  email_subject: string | null
-  email_body: string | null
-  email_sent: boolean | null
 }
 
 interface EditLeadDialogProps {
   lead: Lead
   isOpen: boolean
   onClose: () => void
+  onSaved?: (lead: Lead) => void
 }
 
-export function EditLeadDialog({ lead, isOpen, onClose }: EditLeadDialogProps) {
+export function EditLeadDialog({ lead, isOpen, onClose, onSaved }: EditLeadDialogProps) {
   const router = useRouter()
   const [formData, setFormData] = useState<Lead>(lead)
   const [initialData, setInitialData] = useState<Lead>(lead)
@@ -57,60 +56,84 @@ export function EditLeadDialog({ lead, isOpen, onClose }: EditLeadDialogProps) {
     }))
   }
 
-  const handleCheckboxChange = (checked: boolean) => {
+  const handleCheckboxChange = (checked: boolean | "indeterminate") => {
+    const isChecked = checked === true
     setFormData((prev) => ({
       ...prev,
-      was_contacted: checked,
+      was_contacted: isChecked,
+      reply_date: isChecked ? prev.reply_date : null,
     }))
   }
 
-  const handleEmailSentChange = (checked: boolean) => {
+  const handleDateChange = (date: Date | null) => {
     setFormData((prev) => ({
       ...prev,
-      email_sent: checked,
-    }))
-  }
+      reply_date: date,
+    }));
+  };
 
-  const handleUpdate = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+const handleUpdate = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setLoading(true)
 
-    try {
-      const response = await fetch(`/api/leads/${formData.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to update lead")
-      }
-
-      toast.success("Lead updated successfully!")
-      onClose()
-      router.refresh()
-    } catch (error) {
-      console.error("Failed to update lead:", error)
-      toast.error("Failed to update lead.")
-    } finally {
-      setLoading(false)
+  try {
+    // build snake_case payload and force correct types
+    const payload = {
+      first_name: formData.first_name ?? "",
+      last_name:  formData.last_name  ?? "",
+      email:      formData.email      ?? "",
+      company:    formData.company    ?? null,
+      title:      formData.title      ?? null,
+      was_contacted: !!formData.was_contacted,
+      reply_date: formData.reply_date ? formData.reply_date.toISOString() : null,
+      // email_* omitted here on purpose
     }
-  }
 
-  const handleClose = () => {
-    if (isDirty) {
-      if (window.confirm("You have unsaved changes. Are you sure you want to close?")) {
-        onClose()
-      }
-    } else {
+    const response = await fetch(`/api/leads/${formData.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+
+    if (!response.ok) {
+      throw new Error("Failed to update lead")
+    }
+
+    // normalize reply_date back to Date for local state
+    const updated = await response.json()
+    const normalized = {
+      ...updated,
+      reply_date: updated.reply_date ? new Date(updated.reply_date) : null,
+    }
+    setFormData(normalized)
+    setInitialData(normalized)
+    onSaved?.(normalized)
+
+    toast.success("Lead updated successfully!")
+    onClose()
+    // router.refresh() is optional now
+  } catch (error) {
+    console.error("Failed to update lead:", error)
+    toast.error("Failed to update lead.")
+  } finally {
+    setLoading(false)
+  }
+}
+
+// handles closing the dialog safely
+const handleDialogOpenChange = (open: boolean) => {
+  if (open) return
+  if (isDirty) {
+    if (window.confirm("You have unsaved changes. Are you sure you want to close?")) {
       onClose()
     }
+  } else {
+    onClose()
   }
+}
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
+    <Dialog open={isOpen} onOpenChange={handleDialogOpenChange}>
       <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>
           <DialogTitle>Edit Lead: {lead.first_name} {lead.last_name}</DialogTitle>
@@ -140,14 +163,6 @@ export function EditLeadDialog({ lead, isOpen, onClose }: EditLeadDialogProps) {
             <Input id="title" value={formData.title || ""} onChange={handleChange} className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="email_subject" className="text-right">Email Subject</Label>
-            <Input id="email_subject" value={formData.email_subject || ""} onChange={handleChange} className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="email_body" className="text-right">Email Body</Label>
-            <Textarea id="email_body" value={formData.email_body || ""} onChange={handleChange} className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="was_contacted" className="text-right">Was Contacted</Label>
             <Checkbox
               id="was_contacted"
@@ -156,15 +171,14 @@ export function EditLeadDialog({ lead, isOpen, onClose }: EditLeadDialogProps) {
               className="col-span-3 text-left"
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="email_sent" className="text-right">Email Sent</Label>
-            <Checkbox
-              id="email_sent"
-              checked={formData.email_sent || false}
-              onCheckedChange={handleEmailSentChange}
-              className="col-span-3 text-left"
-            />
-          </div>
+          {formData.was_contacted && (
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="reply_date" className="text-right">Reply Date</Label>
+              <div className="col-span-3">
+                <DatePicker date={formData.reply_date} setDate={handleDateChange} />
+              </div>
+            </div>
+          )}
           <Button type="submit" disabled={loading || !isDirty}>
             {loading ? "Updating..." : "Update Lead"}
           </Button>

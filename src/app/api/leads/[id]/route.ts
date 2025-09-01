@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(
+  req: Request,
+  ctx: { params: Promise<{ id: string }> }
+) {
   try {
-    const { id } = params
+    const { id } = await ctx.params
     const body = await req.json()
     const { first_name, last_name, email, company, title, was_contacted, reply_date, email_subject, email_body, email_sent } = body
 
@@ -12,7 +15,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     }
 
     const updatedLead = await prisma.lead.update({
-      where: { id: id },
+      where: { id },
       data: {
         first_name,
         last_name,
@@ -33,4 +36,3 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     return NextResponse.json({ error: "Failed to update lead" }, { status: 500 })
   }
 }
-
