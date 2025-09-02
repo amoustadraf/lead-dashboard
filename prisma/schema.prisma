@@ -25,3 +25,21 @@ model Lead {
 
   @@map("ai_table_sheet1")
 }
+
+model EmailJob {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  total     Int
+  sent      Int      @default(0)
+  failed    Int      @default(0)
+  status    String   @default("queued") // queued | running | done | error
+  failures  EmailFailure[]
+}
+
+model EmailFailure {
+  id      String  @id @default(uuid())
+  job_id  String
+  lead_id String
+  error   String
+  job     EmailJob @relation(fields: [job_id], references: [id])
+}

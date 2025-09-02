@@ -11,25 +11,12 @@ import { EditLeadDialog } from "@/components/EditLeadDialog"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { MoreHorizontal } from "lucide-react"
 import AddLeadButton from "@/components/AddLeadButton"
-
-export type Lead = {
-  id: string
-  row_number: string | null
-  first_name: string | null
-  last_name: string | null
-  email: string | null
-  company: string | null
-  title: string | null
-  was_contacted: boolean | null
-  reply_date: Date | null // Changed from string | null to Date | null
-  created_at: string | null
-  email_subject: string | null
-  email_body: string | null
-  email_sent: boolean | null
-}
+import { Checkbox } from "@/components/ui/checkbox";
+import { Lead } from "@/lib/types";
 
 interface LeadsTableProps {
-  totalLeads: number
+  totalLeads?: number; // Make optional as it's not strictly used in current implementation
+  onSelectedLeadsChange?: (selectedLeads: Lead[]) => void; // Make optional
 }
 
 type ApiResponse = {
@@ -45,7 +32,7 @@ type SortKey = "company" | "reply_date" | "first_name" | "created_at"
 
 type StatusFilter = "All" | "Yes" | "No"
 
-export function LeadsTable({ totalLeads }: LeadsTableProps) {
+export function LeadsTable({ totalLeads, onSelectedLeadsChange }: LeadsTableProps) {
   const [q, setQ] = useState("")
   const [status, setStatus] = useState<StatusFilter>("All")
   const [sortBy, setSortBy] = useState<SortKey>("created_at")
@@ -58,6 +45,7 @@ export function LeadsTable({ totalLeads }: LeadsTableProps) {
   const [refreshTick, setRefreshTick] = useState(0)
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
+  const [selectedLeadIds, setSelectedLeadIds] = useState<Set<string>>(new Set());
 
   const query = useMemo(() => {
     const p = new URLSearchParams()
@@ -99,6 +87,12 @@ export function LeadsTable({ totalLeads }: LeadsTableProps) {
       cancelled = true
     }
   }, [query, page])
+
+  useEffect(() => {
+    if (typeof onSelectedLeadsChange === 'function') {
+      onSelectedLeadsChange(items.filter(lead => selectedLeadIds.has(lead.id)));
+    }
+  }, [selectedLeadIds, items, onSelectedLeadsChange]);
 
   useEffect(() => {
     function onDashRefresh() {
@@ -156,22 +150,42 @@ export function LeadsTable({ totalLeads }: LeadsTableProps) {
   function onAddLead() {
     setSelectedLead({
       id: "",
-      row_number: null,
-      first_name: "",
-      last_name: "",
-      email: "",
-      company: "",
-      title: "",
+      row_number: undefined,
+      first_name: null,
+      last_name: null,
+      email: null,
+      company: null,
+      title: null,
       was_contacted: false,
       reply_date: null,
       created_at: null,
-      email_subject: "",
-      email_body: "",
+      email_subject: null,
+      email_body: null,
       email_sent: false,
     });
     setIsEditDialogOpen(true);
   }
 
+  const handleSelectAll = (checked: boolean) => {
+    if (checked) {
+      const newSelectedLeadIds = new Set(items.map(lead => lead.id));
+      setSelectedLeadIds(newSelectedLeadIds);
+    } else {
+      setSelectedLeadIds(new Set());
+    }
+  };
+
+  const handleSelectLead = (leadId: string, checked: boolean) => {
+    setSelectedLeadIds(prev => {
+      const newSet = new Set(prev);
+      if (checked) {
+        newSet.add(leadId);
+      } else {
+        newSet.delete(leadId);
+      }
+      return newSet;
+    });
+  };
 
   return (
     <div className="space-y-4">
@@ -202,6 +216,12 @@ export function LeadsTable({ totalLeads }: LeadsTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead className="w-[40px]">
+              <Checkbox
+                checked={selectedLeadIds.size === items.length && items.length > 0}
+                onCheckedChange={handleSelectAll}
+              />
+            </TableHead>
             <TableHead className="w-[180px]">Name</TableHead>
             <TableHead>
               <button className="inline-flex items-center gap-1" onClick={() => toggleSort("company")}>Company {sortBy === "company" ? (sortDir === "asc" ? <ArrowUpAZ className="size-3" /> : <ArrowDownAZ className="size-3" />) : null}</button>
@@ -232,9 +252,15 @@ export function LeadsTable({ totalLeads }: LeadsTableProps) {
               const d = new Date(lead.reply_date)
               return Number.isNaN(d.getTime()) ? "—" : d.toLocaleDateString()
             })()
-            const key = lead.ai_table_identifier || `${lead.email ?? "no-email"}-${idx}`
+            const key = lead.id || `${lead.email ?? "no-email"}-${idx}`
             return (
               <TableRow key={key}>
+                <TableCell className="w-[40px]">
+                  <Checkbox
+                    checked={selectedLeadIds.has(lead.id)}
+                    onCheckedChange={(checked) => handleSelectLead(lead.id, !!checked)}
+                  />
+                </TableCell>
                 <TableCell className="font-medium">{fullName}</TableCell>
                 <TableCell>{lead.company || "—"}</TableCell>
                 <TableCell>{lead.title || "—"}</TableCell>

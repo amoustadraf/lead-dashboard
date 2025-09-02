@@ -10,17 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "sonner"
 import { DatePicker } from "@/components/ui/date-picker";
-
-interface Lead {
-  id: string
-  first_name: string | null
-  last_name: string | null
-  email: string | null
-  company: string | null
-  title: string | null
-  was_contacted: boolean | null
-  reply_date: Date | null
-}
+import { Lead } from "@/lib/types";
 
 interface EditLeadDialogProps {
   lead: Lead
@@ -79,13 +69,13 @@ const handleUpdate = async (e: React.FormEvent) => {
   try {
     // build snake_case payload and force correct types
     const payload = {
-      first_name: formData.first_name ?? "",
-      last_name:  formData.last_name  ?? "",
-      email:      formData.email      ?? "",
+      first_name: formData.first_name ?? null,
+      last_name:  formData.last_name  ?? null,
+      email:      formData.email      ?? null,
       company:    formData.company    ?? null,
       title:      formData.title      ?? null,
       was_contacted: !!formData.was_contacted,
-      reply_date: formData.reply_date ? formData.reply_date.toISOString() : null,
+      reply_date: formData.reply_date ? new Date(formData.reply_date).toISOString() : null,
       // email_* omitted here on purpose
     }
 
@@ -144,23 +134,23 @@ const handleDialogOpenChange = (open: boolean) => {
         <form onSubmit={handleUpdate} className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="first_name" className="text-right">First Name</Label>
-            <Input id="first_name" value={formData.first_name || ""} onChange={handleChange} className="col-span-3" required />
+            <Input id="first_name" value={formData.first_name ?? ""} onChange={handleChange} className="col-span-3" required />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="last_name" className="text-right">Last Name</Label>
-            <Input id="last_name" value={formData.last_name || ""} onChange={handleChange} className="col-span-3" required />
+            <Input id="last_name" value={formData.last_name ?? ""} onChange={handleChange} className="col-span-3" required />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="email" className="text-right">Email</Label>
-            <Input id="email" type="email" value={formData.email || ""} onChange={handleChange} className="col-span-3" required />
+            <Input id="email" type="email" value={formData.email ?? ""} onChange={handleChange} className="col-span-3" required />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="company" className="text-right">Company</Label>
-            <Input id="company" value={formData.company || ""} onChange={handleChange} className="col-span-3" />
+            <Input id="company" value={formData.company ?? ""} onChange={handleChange} className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="title" className="text-right">Title</Label>
-            <Input id="title" value={formData.title || ""} onChange={handleChange} className="col-span-3" />
+            <Input id="title" value={formData.title ?? ""} onChange={handleChange} className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="was_contacted" className="text-right">Was Contacted</Label>
@@ -175,7 +165,7 @@ const handleDialogOpenChange = (open: boolean) => {
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="reply_date" className="text-right">Reply Date</Label>
               <div className="col-span-3">
-                <DatePicker date={formData.reply_date} setDate={handleDateChange} />
+                <DatePicker date={formData.reply_date instanceof Date ? formData.reply_date : (formData.reply_date ? new Date(formData.reply_date) : null)} setDate={handleDateChange} />
               </div>
             </div>
           )}
